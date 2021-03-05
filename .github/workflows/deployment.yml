@@ -1,0 +1,13 @@
+name: deployment
+
+on: deployment
+
+jobs:
+  deploy:
+    name: Deploy ${{ github.event.deployment.environment }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check Permission
+      if: github.event.deployment.environment == 'production'
+      run: |
+        echo ${{ github.actor }}
